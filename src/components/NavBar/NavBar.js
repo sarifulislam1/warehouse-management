@@ -43,7 +43,7 @@ const NavBar = () => {
                     </span>
                     <span className="navbar-text">
                         {
-                            !user ? <Link className="nav-link active text-success" aria-current="page" to="/signup">Sign Up</Link> : <Link onClick={handleSignOut} className="nav-link active text-success" aria-current="page" to="/signup">Log Out</Link>
+                            !user ? <Link className="nav-link active text-success" aria-current="page" to="/signup">Sign Up</Link> : <Link onClick={handleSignOut} className="nav-link active text-success" aria-current="page" to="/signup">Sign Out</Link>
 
                         }
                     </span>
