@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../Firebase/firebase.init';
 import 'react-toastify/dist/ReactToastify.css';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const SignUp = () => {
 
@@ -43,17 +44,16 @@ const SignUp = () => {
         <Spinner animation="border" variant="success" />
     }
 
-
     useEffect(() => {
 
         if (error) {
             switch (error?.code) {
                 case "auth/invalid-email":
-                    toast("Invalid email provided, please provide a valid email");
+                    toast("Invalid email, please provide a valid email");
                     break;
 
                 case "auth/invalid-password":
-                    toast("Wrong password. Intruder!!")
+                    toast("Wrong password.")
                     break;
                 case "auth/wrong-password":
                     toast("Wrong password!!")
@@ -84,7 +84,7 @@ const SignUp = () => {
                     Sign Up
                 </Button>
             </Form>
-
+            <GoogleLogin></GoogleLogin>
         </div>
     );
 };

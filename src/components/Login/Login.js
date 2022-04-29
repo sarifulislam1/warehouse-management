@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../Firebase/firebase.init';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 
 const Login = () => {
@@ -16,7 +17,6 @@ const Login = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });;
-    console.log(user);
     const handleEmail = (e) => {
         setEmail(e.target.value)
 
@@ -32,21 +32,19 @@ const Login = () => {
         createUserWithEmailAndPassword(email, password)
     }
 
-
-
-    const navigate = useNavigate()
-
-    if (user) {
-        navigate('/home')
-    }
     if (loading) {
         <Spinner animation="border" variant="success" />
     }
 
-    // let errorMsg;
-    // if (error) {
-    //     errorMsg = <p className='text-danger'>{error?.message}</p>
-    // }
+    const navigate = useNavigate()
+    const location1 = useLocation();
+    const from = location1.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (user) {
+            navigate(from);
+        }
+    }, [user]);
 
     useEffect(() => {
 
@@ -84,13 +82,11 @@ const Login = () => {
                     <label className="form-label">Password</label>
                     <input onBlur={handlePassword} type="password" className="form-control" id="exampleInputPassword1" required />
                     <br />
-                    {/* {errorMsg} */}
                     <p>Already have an account? <Link to={"/signup"}>Sign Up</Link></p>
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
-
             </form>
-
+            <GoogleLogin></GoogleLogin>
         </div>
     );
 };

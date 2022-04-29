@@ -34,13 +34,7 @@ const NavBar = () => {
                         </li>
                     </ul>
                     <span className="navbar-text">
-
-                        {
-                            !user ? <Link className="nav-link active text-success" aria-current="page" to="/login">Login</Link> : <Link onClick={handleSignOut} className="nav-link active text-success" aria-current="page" to="/login">Log Out</Link>
-
-                        }
-
-
+                        <Link className="nav-link active text-success" aria-current="page" to="/login">Login</Link>
                     </span>
                     <span className="navbar-text">
                         {
