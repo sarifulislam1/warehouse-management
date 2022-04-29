@@ -34,7 +34,7 @@ const SignUp = () => {
     }
 
     const navigate = useNavigate()
-    console.log(user);
+
     if (user) {
         navigate('/home')
     }
