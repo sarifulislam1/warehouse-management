@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../Firebase/firebase.init';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
 
@@ -32,7 +34,7 @@ const SignUp = () => {
     }
 
     const navigate = useNavigate()
-
+    console.log(user);
     if (user) {
         navigate('/home')
     }
@@ -41,10 +43,26 @@ const SignUp = () => {
         <Spinner animation="border" variant="success" />
     }
 
-    let errorMsg;
-    if (error) {
-        errorMsg = <p className='text-danger'>{error?.message}</p>
-    }
+
+    useEffect(() => {
+
+        if (error) {
+            switch (error?.code) {
+                case "auth/invalid-email":
+                    toast("Invalid email provided, please provide a valid email");
+                    break;
+
+                case "auth/invalid-password":
+                    toast("Wrong password. Intruder!!")
+                    break;
+                case "auth/wrong-password":
+                    toast("Wrong password!!")
+                    break;
+                default:
+                    toast("something went wrong")
+            }
+        }
+    }, [error])
 
     return (
         <div className='w-50 mx-auto text-start mt-5'>
@@ -61,11 +79,12 @@ const SignUp = () => {
                     <Form.Control onBlur={handlePassword} type="password" placeholder="Password" required />
                 </Form.Group>
                 <p>Don't you have an account? <Link to={'/login'}>Login</Link></p>
-                {errorMsg}
+
                 <Button variant="primary" type="submit">
                     Sign Up
                 </Button>
             </Form>
+
         </div>
     );
 };

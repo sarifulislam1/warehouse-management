@@ -9,6 +9,7 @@ const NavBar = () => {
 
     const [user, loading, error] = useAuthState(auth);
 
+
     const handleSignOut = () => {
         signOut(auth);
     }
@@ -26,10 +27,10 @@ const NavBar = () => {
                             <Link className="nav-link active text-success" aria-current="page" to="/home">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Features</a>
+                            <Link className="nav-link active text-success" aria-current="page" to="/manage-inventories">Manage Inventories</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Pricing</a>
+                            <Link className="nav-link active text-success" aria-current="page" to="/my-items">My Items</Link>
                         </li>
                     </ul>
                     <span className="navbar-text">

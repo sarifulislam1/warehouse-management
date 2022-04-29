@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../Firebase/firebase.init';
 
 
@@ -14,7 +16,7 @@ const Login = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });;
-
+    console.log(user);
     const handleEmail = (e) => {
         setEmail(e.target.value)
 
@@ -37,11 +39,37 @@ const Login = () => {
     if (user) {
         navigate('/home')
     }
-
-    let errorMsg;
-    if (error) {
-        errorMsg = <p className='text-danger'>{error?.message}</p>
+    if (loading) {
+        <Spinner animation="border" variant="success" />
     }
+
+    // let errorMsg;
+    // if (error) {
+    //     errorMsg = <p className='text-danger'>{error?.message}</p>
+    // }
+
+    useEffect(() => {
+
+        if (error) {
+            switch (error?.code) {
+                case "auth/invalid-email":
+                    toast("Invalid email provided, please provide a valid email");
+                    break;
+
+                case "auth/invalid-password":
+                    toast("Wrong password. Intruder!!")
+                    break;
+                case "auth/wrong-password":
+                    toast("Wrong password!!")
+                    break;
+                case "auth/email-already-exists":
+                    toast("This email already exists")
+                    break;
+                default:
+                    toast("something went wrong")
+            }
+        }
+    }, [error])
 
     return (
         <div className='w-50 mx-auto text-start mt-5'>
@@ -56,7 +84,7 @@ const Login = () => {
                     <label className="form-label">Password</label>
                     <input onBlur={handlePassword} type="password" className="form-control" id="exampleInputPassword1" required />
                     <br />
-                    {errorMsg}
+                    {/* {errorMsg} */}
                     <p>Already have an account? <Link to={"/signup"}>Sign Up</Link></p>
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
