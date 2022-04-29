@@ -9,6 +9,9 @@ import { ToastContainer } from 'react-toastify';
 import ManageInventories from './components/ManageInventories/ManageInventories';
 import MyItems from './components/MyItems/MyItems';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Footer from './components/Footer/Footer';
+import NotFound from './components/NotFound/NotFound';
+import UpdateItem from './components/UpdateItem/UpdateItem';
 
 // https://stackoverflow.com/questions/72055776/how-to-show-firebase-auth-error-messages-different-in-ui
 
@@ -31,7 +34,12 @@ function App() {
             <MyItems></MyItems>
           </PrivateRoute>
         }></Route>
+        <Route path='/update-item' element={<PrivateRoute>
+          <UpdateItem></UpdateItem>
+        </PrivateRoute>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );
