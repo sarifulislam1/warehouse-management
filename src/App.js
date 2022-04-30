@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
 import UpdateItem from './components/UpdateItem/UpdateItem';
+import AddItem from './components/AddItem/AddItem';
 
 // https://stackoverflow.com/questions/72055776/how-to-show-firebase-auth-error-messages-different-in-ui
 
@@ -36,6 +37,9 @@ function App() {
         }></Route>
         <Route path='/update-item' element={<PrivateRoute>
           <UpdateItem></UpdateItem>
+        </PrivateRoute>}></Route>
+        <Route path='/add-item' element={<PrivateRoute>
+          <AddItem></AddItem>
         </PrivateRoute>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>

@@ -4,11 +4,11 @@ const useItem = () => {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch('data.json')
+        fetch('https://boiling-crag-46002.herokuapp.com/items')
             .then(res => res.json())
             .then(data => setItems(data))
     }, [])
-    return { items }
+    return { items, setItems }
 }
 
 

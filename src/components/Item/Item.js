@@ -13,7 +13,7 @@ const Item = (props) => {
         <div className=''>
             <div className='m-3'>
                 <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={img} />
+                    <Card.Img variant="top" style={{ height: '250px' }} className='img-fluid' src={img} />
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Card.Text>

@@ -19,7 +19,7 @@ const Items = () => {
                     {
                         items.map(items => <Item
                             items={items}
-                            key={items.id}
+                            key={items._id}
                         ></Item>
 
 
