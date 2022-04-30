@@ -3,11 +3,12 @@ import { Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const Item = (props) => {
-    const { name, img, description, price, quantity, supplierName, id } = props.items
+
+    const { name, img, description, price, quantity, supplierName, _id } = props.items
     const navigate = useNavigate()
 
     const handleUpdateItem = (id) => {
-        navigate('/update-item')
+        navigate(`/update-item/${id}`)
     }
     return (
         <div className=''>
@@ -22,7 +23,7 @@ const Item = (props) => {
                         <p>Quantity: {quantity}</p>
                         <p>Price:$ {price}</p>
                         <h6>Supplier: {supplierName}</h6>
-                        <Button onClick={() => handleUpdateItem(id)} variant="primary">Update</Button>
+                        <Button onClick={() => handleUpdateItem(_id)} variant="success">Update</Button>
                     </Card.Body>
                 </Card>
             </div>

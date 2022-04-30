@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useItem from '../Hooks/useItem';
 
 
 const AddItem = () => {
-
+    const { setItems } = useItem()
     const navigate = useNavigate()
 
     const addItemHandle = (e) => {
@@ -27,14 +28,14 @@ const AddItem = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
+                setItems(data)
             });
     }
     return (
         <div>
             <form onSubmit={addItemHandle}>
 
-                <div class=" w-50 mx-auto text-start p-3">
+                <div className=" w-50 mx-auto text-start p-3">
                     <label className="form-label">Item Name</label>
                     <input type="text" name='name' className="form-control" required />
                     <label className="form-label">Description</label>
@@ -46,8 +47,10 @@ const AddItem = () => {
                     <label className="form-label">Supply Name</label>
                     <input type="text" name='supplierName' className="form-control" required />
                     <label className="form-label">Image Url</label>
-                    <input type="text" name='img' className="form-control" />
+                    <input type="text" name='img' className="form-control" src="" alt="" required />
                     <input className='btn btn-success p-2 mt-2' type="submit" value="Submit" />
+
+
                 </div>
             </form>
         </div>

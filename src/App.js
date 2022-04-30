@@ -35,7 +35,7 @@ function App() {
             <MyItems></MyItems>
           </PrivateRoute>
         }></Route>
-        <Route path='/update-item' element={<PrivateRoute>
+        <Route path='/update-item/:id' element={<PrivateRoute>
           <UpdateItem></UpdateItem>
         </PrivateRoute>}></Route>
         <Route path='/add-item' element={<PrivateRoute>

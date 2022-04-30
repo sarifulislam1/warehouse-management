@@ -11,9 +11,11 @@ const ManageInventories = () => {
     }
     return (
         <div>
-            <button onClick={addItem} className='btn btn-success'>Add New Item</button>
-            <h1> inventories</h1>
 
+            <div className='d-flex justify-content-around mt-5'>
+                <h2 className='text-success'>All Items</h2>
+                <button onClick={addItem} className='btn btn-success '>Add New Item</button>
+            </div>
             <div className='container row mx-auto'>
 
                 <div className='row row-cols-lg-3 col-sm-12 mx-auto p-3 g-2'>
