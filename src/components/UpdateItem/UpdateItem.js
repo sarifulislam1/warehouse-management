@@ -36,13 +36,29 @@ const UpdateItem = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                setItems(data)
+                console.log(data)
                 alert("Item Updated")
                 e.target.reset('')
                 setIsReload(!isReload)
             });
 
     }
+
+
+    const handleDelete = () => {
+
+
+        fetch(`https://boiling-crag-46002.herokuapp.com/item/${id}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setIsReload(!isReload);
+
+            });
+        navigate('/home')
+    };
 
     return (
         <div>
@@ -75,10 +91,14 @@ const UpdateItem = () => {
                             <input className='btn btn-success p-2 mt-2' type="submit" value="Update" />
                         </form>
                     </div>
+                    <div >
+                        <button className='btn btn-secondary m-2 mt-4'>Delivery</button>
+                        <button onClick={handleDelete} className='btn btn-danger m-2 mt-4'>Delete</button>
+                    </div>
 
                 </div>
             </div>
-            <button className='btn btn-success p-2 m-5' onClick={handleManageBtn}>Manage Inventories</button>
+            <button className='btn btn-success p-2 mb-5' onClick={handleManageBtn}>Manage Inventories</button>
         </div>
     );
 };
