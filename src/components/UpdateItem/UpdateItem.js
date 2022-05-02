@@ -6,7 +6,7 @@ import useItem from '../Hooks/useItem';
 
 
 const UpdateItem = () => {
-    const { setItems } = useItem()
+    const { items, setItems } = useItem()
     const [isReload, setIsReload] = useState(false);
 
     const { id } = useParams()
@@ -20,6 +20,8 @@ const UpdateItem = () => {
             .then(res => res.json())
             .then(data => setupdateItem(data))
     }, [isReload])
+
+
 
     const updateItemQuantity = (e) => {
         e.preventDefault();
@@ -57,8 +59,30 @@ const UpdateItem = () => {
                 setIsReload(!isReload);
 
             });
-        navigate('/home')
+        navigate('/manage-inventories')
     };
+
+
+    const deliveryHandle = () => {
+
+        const quantity = Number(updateItem.quantity) - 1
+        const url = `https://boiling-crag-46002.herokuapp.com/item/${id}`
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                quantity
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setupdateItem(data)
+                setIsReload(!isReload)
+                alert('delivered')
+            });
+    }
 
     return (
         <div>
@@ -92,7 +116,7 @@ const UpdateItem = () => {
                         </form>
                     </div>
                     <div >
-                        <button className='btn btn-secondary m-2 mt-4'>Delivery</button>
+                        <button onClick={deliveryHandle} className='btn btn-secondary m-2 mt-4'>Delivery</button>
                         <button onClick={handleDelete} className='btn btn-danger m-2 mt-4'>Delete</button>
                     </div>
 
