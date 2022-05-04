@@ -18,7 +18,7 @@ const Item = (props) => {
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Card.Text>
-                            {description}
+                            {description.slice(0, 34)}...
                         </Card.Text>
                         <p>Quantity: {quantity}</p>
                         <p>Price:$ {price}</p>

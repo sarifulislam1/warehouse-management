@@ -49,7 +49,6 @@ const UpdateItem = () => {
 
     const handleDelete = () => {
 
-
         fetch(`https://boiling-crag-46002.herokuapp.com/item/${id}`, {
             method: "DELETE",
         })

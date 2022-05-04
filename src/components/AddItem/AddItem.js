@@ -1,9 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import auth from '../Firebase/firebase.init';
 import useItem from '../Hooks/useItem';
 
 
 const AddItem = () => {
+    const [user] = useAuthState(auth);
     const { setItems } = useItem()
     const navigate = useNavigate()
 
@@ -16,6 +19,7 @@ const AddItem = () => {
         const price = e.target.price.value
         const supplierName = e.target.supplierName.value
         const img = e.target.img.value
+        const email = user.email
 
         fetch('https://boiling-crag-46002.herokuapp.com/item', {
             method: 'POST',
@@ -23,7 +27,7 @@ const AddItem = () => {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
-                name, description, quantity, price, supplierName, img
+                name, description, quantity, price, supplierName, img, email
             }),
         })
             .then((res) => res.json())
@@ -38,6 +42,12 @@ const AddItem = () => {
                 <div className=" w-50 mx-auto text-start p-3">
                     <label className="form-label">Item Name</label>
                     <input type="text" name='name' className="form-control" required />
+
+                    {/* <label className="form-label">Email</label>
+                    <input type="email" name='email' className="form-control" required /> */}
+
+
+
                     <label className="form-label">Description</label>
                     <input type="text" name='description' className="form-control" required />
                     <label className="form-label">Quantity</label>
