@@ -20,10 +20,11 @@ const AddItem = () => {
         const supplierName = e.target.supplierName.value
         const img = e.target.img.value
         const email = user.email
-
-        fetch('https://boiling-crag-46002.herokuapp.com/item', {
+        ////      https://boiling-crag-46002.herokuapp.com/item
+        fetch('http://localhost:4000/item', {
             method: 'POST',
             headers: {
+                'authorization': `${user.email} ${localStorage.getItem("accessToken")}`,
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({

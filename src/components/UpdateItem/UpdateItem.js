@@ -47,20 +47,24 @@ const UpdateItem = () => {
     }
 
 
-    const handleDelete = () => {
+    const handleDelete = (id) => {
+        const confirm = window.confirm('are you sure you want to delete this item')
+        if (confirm) {
+            fetch(`https://boiling-crag-46002.herokuapp.com/item/${id}`, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    setIsReload(!isReload);
 
-        fetch(`https://boiling-crag-46002.herokuapp.com/item/${id}`, {
-            method: "DELETE",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setIsReload(!isReload);
+                });
+            navigate('/manage-inventories')
+        }
 
-            });
-        navigate('/manage-inventories')
+
     };
-
+    // confirm('')
 
     const deliveryHandle = () => {
 
@@ -116,7 +120,7 @@ const UpdateItem = () => {
                     </div>
                     <div >
                         <button onClick={deliveryHandle} className='btn btn-secondary m-2 mt-4'>Delivery</button>
-                        <button onClick={handleDelete} className='btn btn-danger m-2 mt-4'>Delete</button>
+                        <button onClick={() => handleDelete(updateItem._id)} className='btn btn-danger m-2 mt-4'>Delete</button>
                     </div>
 
                 </div>

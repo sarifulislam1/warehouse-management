@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -30,6 +31,7 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         createUserWithEmailAndPassword(email, password)
+
     }
 
     if (loading) {
@@ -42,7 +44,25 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
+
+            const url = 'https://boiling-crag-46002.herokuapp.com/login'
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: user.user.email
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    localStorage.setItem('accessToken', data.accessToken)
+                });
+
+
             navigate(from);
+
         }
     }, [user]);
 

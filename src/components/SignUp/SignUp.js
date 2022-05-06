@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../Firebase/firebase.init';
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleLogin from '../GoogleLogin/GoogleLogin';
+import axios from 'axios';
 
 const SignUp = () => {
 
@@ -32,12 +33,32 @@ const SignUp = () => {
     const handleSignUp = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(email, password)
+
     }
 
+    // const navigate = useNavigate()
+    const location = useLocation();
     const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
 
     if (user) {
-        navigate('/home')
+        const url = 'https://boiling-crag-46002.herokuapp.com/login'
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: user.user.email
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                localStorage.setItem('accessToken', data.accessToken)
+            });
+
+
+        navigate(from);
     }
 
     if (loading) {
