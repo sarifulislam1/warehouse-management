@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import auth from '../Firebase/firebase.init';
 import useItem from '../Hooks/useItem';
 import Item from '../Item/Item';
 
@@ -9,12 +11,14 @@ const ManageInventories = () => {
     const addItem = () => {
         navigate('/add-item')
     }
+
+    const [user] = useAuthState(auth);
     return (
         <div>
 
             <div className='d-flex justify-content-around mt-5'>
                 <h2 className='text-success'>All Items</h2>
-                <button onClick={addItem} className='btn btn-success '>Add New Item</button>
+                <button onClick={addItem} className='btn btn-success '>Add Item</button>
             </div>
             <div className='container row mx-auto'>
 
@@ -23,6 +27,7 @@ const ManageInventories = () => {
                         items.map(items => <Item
                             items={items}
                             key={items._id}
+
                         ></Item>
 
 

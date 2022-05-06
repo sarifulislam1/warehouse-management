@@ -13,6 +13,8 @@ const Items = () => {
     return (
         <div className='mt-5'>
             <h2 className='text-success mt-5 p-3'>Items</h2>
+
+
             <div className='container row mx-auto'>
 
                 <div className='row row-cols-lg-3 col-sm-12 mx-auto p-3 g-2'>
@@ -27,6 +29,8 @@ const Items = () => {
                     }
                 </div>
             </div>
+
+
             <button className='btn btn-success p-2 m-5' onClick={handleManageBtn}>Manage Inventories</button>
         </div >
     );

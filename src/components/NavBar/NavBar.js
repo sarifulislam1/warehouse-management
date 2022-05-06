@@ -15,7 +15,7 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light fw-bold ">
+        <nav className="navbar navbar-expand-lg navbar-light fw-bold">
             <div className="container">
                 <Link className="navbar-brand fs-4 text-success" to={'/'}>Fresh Grocery</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,9 +26,12 @@ const NavBar = () => {
                         <li className="nav-item">
                             <Link className="nav-link active text-success" aria-current="page" to="/home">Home</Link>
                         </li>
-                        {/* <li className="nav-item">
-                            <Link className="nav-link active text-success" aria-current="page" to="/manage-inventories">Manage Inventories</Link>
-                        </li> */}
+                        <li className="nav-item">
+                            <Link className="nav-link active text-success" aria-current="page" to="/manage-inventories">Inventories</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link active text-success" aria-current="page" to="/add-item">Add Item</Link>
+                        </li>
                         <li className="nav-item">
                             <Link className="nav-link active text-success" aria-current="page" to="/my-items">My Items</Link>
                         </li>
