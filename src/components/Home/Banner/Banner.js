@@ -5,7 +5,7 @@ const Banner = () => {
         <div className='row align-items-center container mx-auto mt-5 p-4'>
             <div className='col-lg-6 col-sm-3 text-start '>
                 <h1 className='text-success'>Welcome To Our Warehouse</h1>
-                <p className='fs-5'>Green Grocery is an online grocery aspiring to be a leader in the Organic food industry in Bangladesh.</p>
+                <p className='fs-5 text-success'>Green Grocery is an online grocery aspiring to be a leader in the Organic food industry in Bangladesh.</p>
                 <button className='btn btn-success'>Read More</button>
             </div>
             <div className='col-lg-6 col-sm-3 mx-auto p-2'>

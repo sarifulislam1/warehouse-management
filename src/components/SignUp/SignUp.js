@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../Firebase/firebase.init';
@@ -12,6 +12,7 @@ const SignUp = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -85,9 +86,12 @@ const SignUp = () => {
         }
     }, [error])
 
+
+
+
     return (
         <div className='w-50 mx-auto text-start mt-5'>
-            <h2 className='text-secondary'>Please Sign Up</h2>
+            <h2 className='text-success'>Please Sign Up</h2>
             <Form onSubmit={handleSignUp}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -101,7 +105,8 @@ const SignUp = () => {
                 </Form.Group>
                 <p>Don't you have an account? <Link to={'/login'}>Login</Link></p>
 
-                <Button variant="primary" type="submit">
+                <p>Forget Your Password? <Link to={'/resetPassword'}>Reset Password</Link></p>
+                <Button variant="success" type="submit">
                     Sign Up
                 </Button>
             </Form>

@@ -17,6 +17,7 @@ const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light fw-bold">
             <div className="container">
+                <img className='nav-pic' src="https://static.vecteezy.com/system/resources/thumbnails/003/340/057/small/warehouse-interior-with-boxes-on-rack-and-people-working-vector.jpg" alt="" />
                 <Link className="navbar-brand fs-4 text-success" to={'/'}>Fresh Grocery</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

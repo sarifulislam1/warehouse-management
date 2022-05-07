@@ -91,20 +91,22 @@ const Login = () => {
 
     return (
         <div className='w-50 mx-auto text-start mt-5'>
-            <h2 className='text-secondary'>Please Login</h2>
+            <h2 className='text-success'>Please Login</h2>
             <form onSubmit={handleLogin}>
                 <div className="mb-3">
                     <label className="form-label">Email address</label>
-                    <input type="email" onBlur={handleEmail} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
+                    <input placeholder='Email address' type="email" onBlur={handleEmail} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
 
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Password</label>
-                    <input onBlur={handlePassword} type="password" className="form-control" id="exampleInputPassword1" required />
+                    <input placeholder='Password' onBlur={handlePassword} type="password" className="form-control" id="exampleInputPassword1" required />
                     <br />
                     <p>Already have an account? <Link to={"/signup"}>Sign Up</Link></p>
+                    <p>Forget Your Password? <Link to={'/resetPassword'}>Reset Password</Link></p>
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-success">Login</button>
+
             </form>
             <GoogleLogin></GoogleLogin>
         </div>

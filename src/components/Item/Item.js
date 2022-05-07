@@ -40,17 +40,22 @@ const Item = (props) => {
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" style={{ height: '220px' }} className='img-fluid' src={img} />
                         <Card.Body>
-                            <Card.Title>{name}</Card.Title>
-                            <Card.Text title={description}>
+                            <Card.Title className='text-success'>{name}</Card.Title>
+                            <Card.Text className='text-success' title={description}>
                                 {description.slice(0, 34)}...
                             </Card.Text>
-                            <p>Quantity: {quantity}</p>
-                            <p>Price:$ {price}</p>
-                            <h6>Supplier: {supplierName}</h6>
-                            <Button onClick={() => handleUpdateItem(_id)} variant="success">Update</Button>
-                            {
-                                !user ? <Button disabled onClick={() => handleDelete(_id)} className=' btn-danger m-2'>Delete</Button> : <Button onClick={() => handleDelete(_id)} className=' btn-danger m-2'>Delete</Button>
-                            }
+                            <div className='text-success'>
+                                <p>Quantity: {quantity}</p>
+                                <p>Price:$ {price}</p>
+                                <h6>Supplier: {supplierName}</h6>
+                            </div>
+
+                            <div className='text-center d-flex justify-content-evenly'>
+                                <Button className=' btn-success m-2' onClick={() => handleUpdateItem(_id)} variant="success">Update</Button>
+                                {
+                                    !user ? ' ' : <Button onClick={() => handleDelete(_id)} className=' btn-danger m-2'>Delete</Button>
+                                }
+                            </div>
 
                         </Card.Body>
                     </Card>
