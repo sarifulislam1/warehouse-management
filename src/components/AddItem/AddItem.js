@@ -17,8 +17,11 @@ const AddItem = () => {
         alert('Item Added')
         // navigate('/manage-inventories')
         const name = e.target.name.value
+
         const description = e.target.description.value
+
         const quantity = e.target.quantity.value
+
         const price = e.target.price.value
         const supplierName = e.target.supplierName.value
         const img = e.target.img.value
@@ -37,11 +40,15 @@ const AddItem = () => {
             .then((res) => res.json())
             .then((data) => {
                 setItems(data)
+                e.target.reset('')
                 setIsReload(!isReload)
             });
+
+
     }
     return (
         <div>
+            <h3 className='text-success mt-2'>Add New Item</h3>
             <form onSubmit={addItemHandle}>
 
                 <div className=" w-50 mx-auto text-start p-3">
