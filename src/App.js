@@ -14,6 +14,7 @@ import NotFound from './components/NotFound/NotFound';
 import UpdateItem from './components/UpdateItem/UpdateItem';
 import AddItem from './components/AddItem/AddItem';
 import ResetPass from './components/ResetPass/ResetPass';
+import Blogs from './components/Blogs/Blogs';
 
 // https://stackoverflow.com/questions/72055776/how-to-show-firebase-auth-error-messages-different-in-ui
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/resetPassword' element={<ResetPass></ResetPass>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/manage-inventories' element={
           <PrivateRoute>
             <ManageInventories></ManageInventories>

@@ -36,6 +36,9 @@ const NavBar = () => {
                         <li className="nav-item">
                             <Link className="nav-link active text-success" aria-current="page" to="/my-items">My Items</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link active text-success" aria-current="page" to="/blogs">Blogs</Link>
+                        </li>
                     </ul>
                     <span className="navbar-text">
                         <Link className="nav-link active text-success" aria-current="page" to="/login">Login</Link>
