@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../Firebase/firebase.init';
@@ -9,6 +9,7 @@ const AddItem = () => {
     const [user] = useAuthState(auth);
     const { setItems } = useItem()
     const navigate = useNavigate()
+    const [isReload, setIsReload] = useState(false)
 
     const addItemHandle = (e) => {
         e.preventDefault();
@@ -34,6 +35,7 @@ const AddItem = () => {
             .then((res) => res.json())
             .then((data) => {
                 setItems(data)
+                setIsReload(!isReload)
             });
     }
     return (

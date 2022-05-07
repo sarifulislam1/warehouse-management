@@ -1,6 +1,39 @@
-# Getting Started with Create React App
+# Fresh Grocery
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project live link[Fresh Grocery](https://fresh-grocery-c4276.web.app/).
+
+
+
+
+
+
+## Hi, I'm Sariful Islam! 👋
+
+
+## About Project
+
+ - This is a Grocery Warehouse Projet
+ - This project build on React
+ - This is a SPA
+ - This website Data came from MongoDB
+ - I use raw CSS for this project
+ - This project have one header path that navigate in other pages
+## PROJECT MADE BY
+
+**React** 
+**Route** 
+**Raw CSS**  
+**Firebase Hook**  
+**Firebase Auth**  
+**React Bootstrap**  
+**React Icon**  
+**React Tostefy** 
+**Data Servar host in heroku.com**
+**website host in Firebase**
+
+
+
+
 
 ## Available Scripts
 
