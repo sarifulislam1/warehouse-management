@@ -1,13 +1,16 @@
 import { Button } from 'bootstrap';
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
+import auth from '../Firebase/firebase.init';
 import useItem from '../Hooks/useItem';
 
 
 const UpdateItem = () => {
-    const { items, setItems } = useItem()
+    // const [setItems] = useItem()
     const [isReload, setIsReload] = useState(false);
+    const [isReload1, setIsReload1] = useState(false);
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -46,22 +49,24 @@ const UpdateItem = () => {
 
     }
 
-
+    const [user] = useAuthState(auth);
     const handleDelete = (id) => {
         const confirm = window.confirm('are you sure you want to delete this item')
-        if (confirm) {
+        if (confirm && user) {
+
             fetch(`https://boiling-crag-46002.herokuapp.com/item/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())
                 .then((data) => {
                     console.log(data);
-                    setIsReload(!isReload);
+                    setIsReload(!isReload)
+
 
                 });
-            navigate('/manage-inventories')
-        }
 
+        }
+        navigate('/manage-inventories')
 
     };
     // confirm('')

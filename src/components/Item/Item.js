@@ -4,9 +4,11 @@ import { Button, Card } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../Firebase/firebase.init';
+import useItem from '../Hooks/useItem';
 const Item = (props) => {
     const [user] = useAuthState(auth);
     const [isReload, setIsReload] = useState(false);
+    // const [setItem] = useItem({})
     const { name, img, description, price, quantity, supplierName, _id } = props.items
     const navigate = useNavigate()
 
@@ -27,7 +29,7 @@ const Item = (props) => {
                     setIsReload(!isReload);
 
                 });
-            navigate('/manage-inventories')
+            navigate('/add-item')
         }
 
 
@@ -36,13 +38,13 @@ const Item = (props) => {
 
         <div>
             <div className=' text-start'>
-                <div className='m-3'>
+                <div className='m-3 '>
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" style={{ height: '220px' }} className='img-fluid' src={img} />
                         <Card.Body>
                             <Card.Title className='text-success'>{name}</Card.Title>
                             <Card.Text className='text-success' title={description}>
-                                {description.slice(0, 34)}...
+                                {description.slice(0, 30)}...
                             </Card.Text>
                             <div className='text-success'>
                                 <p>Quantity: {quantity}</p>
@@ -62,7 +64,7 @@ const Item = (props) => {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 

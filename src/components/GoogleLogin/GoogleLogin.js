@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../Firebase/firebase.init';
+import { FaFacebookSquare, FaInstagramSquare, FaTwitter, FaGoogle, FaLinkedin } from "react-icons/fa";
 
 const GoogleLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth)
@@ -39,8 +40,9 @@ const GoogleLogin = () => {
         <div>
             <button
                 onClick={() => signInWithGoogle()}
-                className='btn  w-50 d-block mx-auto my-4 border border-2 rounded'>
-                <img style={{ width: '30px' }} src="https://cdn.imgbin.com/17/10/21/google-suite-icon-google-icon-LmAAJV07.jpg" alt="" />
+                className='d-flex  justify-content-center align-items-center btn  w-50 d-block mx-auto my-4 border border-2 rounded'>
+                <h3 className='text-success'><FaGoogle /></h3>
+                {/* <img style={{ width: '30px' }} src="https://cdn.imgbin.com/17/10/21/google-suite-icon-google-icon-LmAAJV07.jpg" alt="" /> */}
                 <span className='px-2 text-success fs-5'>Google Sign In</span>
             </button>
         </div>
