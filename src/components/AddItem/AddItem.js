@@ -13,6 +13,8 @@ const AddItem = () => {
 
     const addItemHandle = (e) => {
         e.preventDefault();
+
+        alert('Item Added')
         navigate('/manage-inventories')
         const name = e.target.name.value
         const description = e.target.description.value
