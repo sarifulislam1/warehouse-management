@@ -4,6 +4,7 @@ import { Card } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../Firebase/firebase.init';
+import './UpdateItem.css'
 import useItem from '../Hooks/useItem';
 
 
@@ -93,13 +94,13 @@ const UpdateItem = () => {
     }
 
     return (
-        <div>
-            <h3>Update item: {id}</h3>
+        <div className='container'>
+            <h3 className='text-success'>Update item: {id}</h3>
 
             <div className='row row-cols-lg-2 col-sm-12 mx-auto p-3 g-2'>
                 <div>
-                    <div className='m-3 mx-auto w-50'>
-                        <Card style={{ width: '18rem' }}>
+                    <div className='ms-3 mx-auto w-50'>
+                        {/* <Card style={{ width: '18rem' }}>
                             <Card.Img variant="top" style={{ height: '250px' }} className='img-fluid' src={updateItem.img} />
                             <Card.Body>
                                 <Card.Title>{updateItem.name}</Card.Title>
@@ -111,11 +112,34 @@ const UpdateItem = () => {
                                 <h6>Supplier: {updateItem.supplierName}</h6>
 
                             </Card.Body>
-                        </Card>
+                        </Card> */}
                     </div>
                 </div>
 
-                <div >
+
+
+
+                <div className="card mb-3 w-100 text-success shadow-lg" >
+                    <div className="row g-0 mx-auto ">
+                        <div className="col-lg-4 update-pic">
+                            <img src={updateItem.img} className=" img-fluid h-100 w-100" alt="..." />
+                        </div>
+                        <div className="col-lg-8">
+                            <div className="card-body">
+                                <h4>{updateItem.name}</h4>
+                                <p>Quantity: {updateItem.quantity}</p>
+                                <p>Price:$ {updateItem.price}</p>
+                                <h6>Supplier: {updateItem.supplierName}</h6>
+                                <p className="card-text">{updateItem.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div className='container '>
                     <div>
                         <form onSubmit={updateItemQuantity}>
                             <label className="form-label">Quantity:</label>
